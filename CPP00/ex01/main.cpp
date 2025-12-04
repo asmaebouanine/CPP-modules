@@ -6,16 +6,16 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 17:09:17 by asbouani          #+#    #+#             */
-/*   Updated: 2025/12/02 14:47:25 by asbouani         ###   ########.fr       */
+/*   Updated: 2025/12/04 15:46:44 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "PhoneBook.hpp"
 #include <sstream>
 
 int main()
 {
-    Phonebook phonebook;
+    PhoneBook phonebook;
     std::string command;
     
     while (true)

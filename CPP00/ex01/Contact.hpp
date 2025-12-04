@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.hpp                                        :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 20:20:38 by asbouani          #+#    #+#             */
-/*   Updated: 2025/12/01 18:20:41 by asbouani         ###   ########.fr       */
+/*   Updated: 2025/12/04 15:45:18 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ class  Contact
         void setLastName(const std::string& str);
         void setNickname(const std::string& str);
         void setPhoneNumber(const std::string& str);
-        void setDarkeSecret(const std::string& str);
+        void setDarketSecret(const std::string& str);
     
         std::string getFirstName();
         std::string getLastName();
         std::string getNickname();
         std::string getPhoneNumber();
-        std::string getDarkeSecret();
+        std::string getDarketSecret();
 };
 
 #endif

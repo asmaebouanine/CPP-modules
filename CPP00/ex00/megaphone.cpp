@@ -6,12 +6,11 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:43:12 by asbouani          #+#    #+#             */
-/*   Updated: 2025/11/30 19:46:54 by asbouani         ###   ########.fr       */
+/*   Updated: 2025/12/04 15:40:48 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <cctype>
 
 int main(int ac, char **av)
 {
@@ -21,9 +20,9 @@ int main(int ac, char **av)
         {
             for(int j = 0; av[i][j]; j++)
                 std:: cout << (char)(toupper(av[i][j]));
-            std:: cout << "\n";
         }
+         std:: cout << "\n";
     }
     else
-    std::cout << "LOUD AND UNBEARABLE FEEDBACK NOISE \n";
+    std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
 }

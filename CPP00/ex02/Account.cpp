@@ -6,12 +6,11 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 16:36:51 by asbouani          #+#    #+#             */
-/*   Updated: 2025/12/04 15:49:12 by asbouani         ###   ########.fr       */
+/*   Updated: 2025/12/09 17:34:38 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
-#include <iomanip>
 #include <iostream>
 
 int Account::_nbAccounts = 0;
@@ -20,7 +19,7 @@ int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
 void Account::_displayTimestamp(void){
-    std::cout << "[19920104_091532] ";
+    std::cout << "[20251208_181530] ";
 }
 
 int Account::getNbAccounts(void){
@@ -38,13 +37,12 @@ int Account::getNbWithdrawals(void){
 
 void Account::displayAccountsInfos(void){
     _displayTimestamp();
-    std::cout << "account:" << getNbAccounts() << ";";
+    std::cout << "accounts:" << getNbAccounts() << ";";
     std::cout << "total:" << getTotalAmount() << ";";
     std::cout << "deposits:" << getNbDeposits() << ";";
     std::cout << "withdrawals:" << getNbWithdrawals() << std::endl;
 }
 
-//constructor
 Account::Account(int initial_deposit)
     : _accountIndex(_nbAccounts),
       _amount(initial_deposit),
@@ -59,17 +57,6 @@ Account::Account(int initial_deposit)
     std::cout << "amount:" << _amount << ";";
     std::cout << "created" << std::endl;
 }
-
-//destructor
-Account::~Account(void){
-    _displayTimestamp();
-    std::cout << "index:" << _accountIndex << ";";
-    std::cout << "amount:" << _amount << ";";
-    std::cout << "closed" << std::endl;
-}
-
-//member functions
-
 void Account::makeDeposit(int deposit){
     _displayTimestamp();
     std::cout << "index:" << _accountIndex << ";";
@@ -117,3 +104,9 @@ void Account::displayStatus(void)const{
     std::cout << "withdrawals:" << _nbWithdrawals << std::endl;
 }
 
+Account::~Account(void){
+    _displayTimestamp();
+    std::cout << "index:" << _accountIndex << ";";
+    std::cout << "amount:" << _amount << ";";
+    std::cout << "closed" << std::endl;
+}

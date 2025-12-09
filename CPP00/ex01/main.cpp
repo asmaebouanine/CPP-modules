@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 17:09:17 by asbouani          #+#    #+#             */
-/*   Updated: 2025/12/04 15:46:44 by asbouani         ###   ########.fr       */
+/*   Updated: 2025/12/09 17:24:25 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int main()
 {
-    PhoneBook phonebook;
+    PhoneBook pb;
     std::string command;
     
     while (true)
@@ -25,17 +25,30 @@ int main()
         if (!std::cin)
             break ;
         if (command == "ADD")
-            phonebook.addContact();
+            pb.addContact();
         else if (command == "SEARCH")
         {
-            phonebook.displayContacts();
+            pb.displayContacts();
+
             std::cout << "Enter index to view: ";
             std::getline(std::cin, command);
-            std::stringstream ss(command);
-            int index;
-            ss >> index;
-            phonebook.showContact(index);
+            bool valid = true;
+            for (size_t i = 0; i < command.length(); i++) {
+                if (!std::isdigit(command[i])) {
+                    valid = false;
+                    break;
+                }
+            }
+            if (!valid)
+                std::cout << "Invalid input! Index must be a number.\n";
+            else {
+                std::stringstream ss(command);
+                int index;
+                ss >> index;
+                pb.showContact(index);
+            }
         }
+
         else if (command == "EXIT")
             break ;
         else

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 20:20:42 by asbouani          #+#    #+#             */
-/*   Updated: 2025/12/04 15:41:34 by asbouani         ###   ########.fr       */
+/*   Updated: 2025/12/09 17:29:33 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ PhoneBook::PhoneBook()
     oldest = 0;
     count = 0;
 };
-// Add a new contact
 std::string PhoneBook::getInput(const std::string& prompt)
 {
     std::string input;
@@ -30,7 +29,6 @@ std::string PhoneBook::getInput(const std::string& prompt)
     return input;
 }
 
-// Add a new contact
 void PhoneBook::addContact()
 {
     contacts[oldest].setFirstName(getInput("First Name: "));
@@ -42,15 +40,13 @@ void PhoneBook::addContact()
     oldest = (oldest + 1) % 8;
     if (count < 8) count++;
 }
-// Display table of contacts
 
 std::string truncate(const std::string &str)
 {
     if (str.length() > 10)
-        return str.substr(0, 9) + "."; // first 9 chars + dot
+        return str.substr(0, 9) + "."; 
     return str;
 }
-// Helper function to truncate strings longer than 10 chars
 void    PhoneBook::displayContacts()
 {
     std::cout << std::setw(10) << "Index"
@@ -67,10 +63,10 @@ void    PhoneBook::displayContacts()
                   << std::endl;
     } 
 }
-// show full contact by index
+
 void    PhoneBook::showContact(int index)
 {
-    if (index < 0 || index >= count || !isdigit(index)){
+    if (index < 0 || index >= count){
         std::cout << "Invalid index!\n";
         return ;
     }

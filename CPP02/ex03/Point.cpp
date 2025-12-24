@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/15 19:23:47 by asbouani          #+#    #+#             */
-/*   Updated: 2025/12/23 17:25:01 by asbouani         ###   ########.fr       */
+/*   Created: 2025/12/18 14:32:01 by asbouani          #+#    #+#             */
+/*   Updated: 2025/12/20 15:01:46 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "Point.hpp"
 
-int main(void)
+Point::Point() : _x(0), _y(0){}
+
+Point::Point(float const x, float const y) : _x(x), _y(y){}
+
+Point::Point(const Point &other) : _x(other._x), _y(other._y){}
+
+Point &Point::operator=(const Point &other)
 {
-    Fixed a;
-    Fixed b(a);
-    Fixed c;
-    
-    c = b;
-    
-    std::cout << a.getRawBits() << std::endl;
-    std::cout << b.getRawBits() << std::endl;
-    std::cout << c.getRawBits() << std::endl;
-    
-    return 0;
+    (void)other;
+    return (*this);
 }
+Point::~Point(){}
+
+Fixed Point::getX() const { return _x; }
+Fixed Point::getY() const {return _y; }

@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/15 19:10:56 by asbouani          #+#    #+#             */
-/*   Updated: 2025/12/23 19:12:34 by asbouani         ###   ########.fr       */
+/*   Created: 2025/12/18 12:20:42 by asbouani          #+#    #+#             */
+/*   Updated: 2025/12/21 21:13:24 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#ifndef POINT_HPP
+#define POINT_HPP
 
-#include <iostream>
+#include "Fixed.hpp"
 
-class Fixed
+class Point
 {
     private:
-        int _rawValue;
-        static const int _fractionalBits;
+        Fixed const _x;
+        Fixed const _y;
         
     public:
-        Fixed();                
-        Fixed(const Fixed &other); 
-        Fixed& operator=(const Fixed &other);
-        ~Fixed();                              
+        Point();
+        Point(const float x, const float y);
+        Point(const Point &other);
+        Point &operator=(const Point &other);
+        ~Point();
         
-        int getRawBits(void) const;
-        void setRawBits(int const raw);
+        Fixed getX(void) const;
+        Fixed getY(void) const;
 };
+
+bool bsp(Point const a, Point const b, Point const c, Point const point);
 
 #endif

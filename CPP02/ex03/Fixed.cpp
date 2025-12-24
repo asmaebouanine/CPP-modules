@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/16 21:28:21 by asbouani          #+#    #+#             */
-/*   Updated: 2025/12/24 18:23:04 by asbouani         ###   ########.fr       */
+/*   Created: 2025/12/18 11:37:51 by asbouani          #+#    #+#             */
+/*   Updated: 2025/12/24 18:26:34 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ Fixed Fixed::operator/(const Fixed &other) const
     result._rawValue = (a << _fractionalBits) / other._rawValue;
     return (result);
 }
+
 Fixed &Fixed::operator++()
 {
     _rawValue++;

@@ -4,13 +4,15 @@ CXX = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
+HDR = ClapTrap.hpp
+
 SRCS = main.cpp ClapTrap.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
-%.o: .%cpp ClapTrap.hpp
+%.o: %.cpp $(HDR)
 	$(CXX) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)

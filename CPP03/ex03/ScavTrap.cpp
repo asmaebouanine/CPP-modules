@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 16:51:58 by asbouani          #+#    #+#             */
-/*   Updated: 2025/12/30 10:33:48 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/01/02 14:32:52 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ ScavTrap::ScavTrap() : ClapTrap()
 {
     _hitPoints = 100;
     _energyPoints = 50;
-    _attackDamage = 50;
+    _attackDamage = 20;
+    _scavEnergy = 50;
     std::cout << "ScavTrap default constructor called" << std::endl;
 }
 ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name)
@@ -24,10 +25,12 @@ ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name)
     _hitPoints = 100;
     _energyPoints = 50;
     _attackDamage = 20;
-    std::cout << "ScavTrap " << name << " is born!" << std::endl;
+    _scavEnergy = 50;
+    std::cout << "ScavTrap " << _name << " is born!" << std::endl;
 }
 ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
 {
+    _scavEnergy = other._scavEnergy;
     std::cout << "ScavTrap " << _name << " is copied!" << std::endl;
 }
 ScavTrap& ScavTrap::operator=(const ScavTrap& other)
@@ -36,6 +39,7 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other)
     if (this != &other)
     {
         ClapTrap::operator=(other);
+        _scavEnergy = other._scavEnergy;
     }
     return (*this);
 }

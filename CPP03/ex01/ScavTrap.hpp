@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 21:46:06 by asbouani          #+#    #+#             */
-/*   Updated: 2025/12/28 20:45:41 by asbouani         ###   ########.fr       */
+/*   Updated: 2025/12/31 16:48:24 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ class ScavTrap : public ClapTrap
         ScavTrap& operator=(const ScavTrap& other);
         ~ScavTrap();
         
-        //overriding the attack function
         void attack(const std::string& target);
-        //the special ability
         void guardGate();
 };
 

@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 11:55:39 by asbouani          #+#    #+#             */
-/*   Updated: 2025/12/29 11:10:43 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/01/01 14:09:23 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 ClapTrap::ClapTrap()
 {
+    _name = "Default";
     _hitPoints = 10;
     _energyPoints = 10;
     _attackDamage = 0;
     std::cout << "ClapTrap default constructor called" << std::endl;
 }
-ClapTrap::ClapTrap(const std::string& name) : _name(name)
+ClapTrap::ClapTrap(const std::string& name)
 {
+    _name = name;
     _hitPoints = 10;
     _energyPoints = 10;
     _attackDamage = 0;
@@ -60,6 +62,7 @@ void ClapTrap::attack(const std::string& target)
     std::cout << "ClapTrap " << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage\n";
     _energyPoints--;
 }
+
 void ClapTrap::takeDamage(unsigned int amount)
 {
     if (_hitPoints <= 0)
@@ -67,7 +70,8 @@ void ClapTrap::takeDamage(unsigned int amount)
         std::cout << "ClapTrap " << _name << " is already dead!" << std::endl;
         return ;
     }
-    if (amount > (unsigned int)_hitPoints)
+    unsigned int hpValue = _hitPoints;
+    if (amount > hpValue)
         _hitPoints = 0;
     else
         _hitPoints -= amount ;

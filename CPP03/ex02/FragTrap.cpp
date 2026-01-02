@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 14:38:58 by asbouani          #+#    #+#             */
-/*   Updated: 2025/12/28 20:48:06 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/01/02 14:14:48 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,7 @@ FragTrap::~FragTrap()
 {
     std::cout << "FragTrap " << _name << " is destroyed!" << std::endl;
 }
-
-void FragTrap::attack(const std::string& target)
-{
-    if (_energyPoints <= 0 || _hitPoints <= 0)
-    {
-        std::cout << "FragTrap " << _name << " is out of energy or dead!" << std::endl;
-    }
-    _energyPoints--;
-    std::cout << "FragTrap " << _name << " attacks " << target
-              << ", causing " << _attackDamage << " points of damage!" << std::endl;
-
-}
 void FragTrap::highFivesGuys(void)
 {
-    std::cout << "FragTrap " << _name << " requests a positive high five! 🙌" << std::endl;
+    std::cout << "FragTrap " << _name << " requests a positive high five!" << std::endl;
 }

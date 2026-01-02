@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 21:45:11 by asbouani          #+#    #+#             */
-/*   Updated: 2025/12/28 20:44:17 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/01/01 14:10:13 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 ClapTrap::ClapTrap()
 {
+    _name = "Default";
     _hitPoints = 10;
     _energyPoints = 10;
     _attackDamage = 0;
@@ -55,12 +56,13 @@ void ClapTrap::attack(const std::string& target)
 {
     if (_energyPoints <= 0 || _hitPoints <= 0)
     {
-        std::cout << "ClapTrap " << _name << " is out of energy!" << std::endl;
+        std::cout << "ClapTrap " << _name << " is out of energy or dead!" << std::endl;
         return ;
     }
     std::cout << "ClapTrap " << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage\n";
     _energyPoints--;
 }
+
 void ClapTrap::takeDamage(unsigned int amount)
 {
     if (_hitPoints <= 0)
@@ -68,7 +70,8 @@ void ClapTrap::takeDamage(unsigned int amount)
         std::cout << "ClapTrap " << _name << " is already dead!" << std::endl;
         return ;
     }
-    if (amount > (unsigned int)_hitPoints)
+    unsigned int hpValue = _hitPoints;
+    if (amount > hpValue)
         _hitPoints = 0;
     else
         _hitPoints -= amount ;
@@ -85,3 +88,4 @@ void ClapTrap::beRepaired(unsigned int amount)
     _hitPoints += amount;
      std::cout << "ClapTrap " << _name << " repairs itself, gaining " << amount << " hit points!\n";
 }
+

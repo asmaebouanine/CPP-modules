@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 14:39:04 by asbouani          #+#    #+#             */
-/*   Updated: 2025/12/28 20:48:16 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/01/02 13:42:46 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ class FragTrap : public ClapTrap
         FragTrap& operator=(const FragTrap& other);
         ~FragTrap();
         
-        void attack(const std::string& target);
         void highFivesGuys(void);
 };
 

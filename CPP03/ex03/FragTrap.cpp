@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 16:51:01 by asbouani          #+#    #+#             */
-/*   Updated: 2025/12/28 20:47:14 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/01/02 14:17:22 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ FragTrap::FragTrap() : ClapTrap()
     _attackDamage = 30;
     std::cout << "FragTrap default constructor is called" << std::endl;
 }
-
 FragTrap::FragTrap(const std::string& name) : ClapTrap(name)
 {
     _hitPoints = 100;
@@ -40,24 +39,13 @@ FragTrap& FragTrap::operator=(const FragTrap& other)
     }
     return (*this);
 }
+
 FragTrap::~FragTrap()
 {
     std::cout << "FragTrap " << _name << " is destroyed!" << std::endl;
 }
 
-void FragTrap::attack(const std::string& target)
-{
-    if (_energyPoints <= 0 || _hitPoints <= 0)
-    {
-        std::cout << "FragTrap " << _name << " is out of energy or dead!" << std::endl;
-        return ;
-    }
-    _energyPoints--;
-    std::cout << "FragTrap " << _name << " attacks " << target
-              << ", causing " << _attackDamage << " points of damage!" << std::endl;
-
-}
 void FragTrap::highFivesGuys(void)
 {
-    std::cout << "FragTrap " << _name << " requests a positive high five! 🙌" << std::endl;
+    std::cout << "FragTrap " << _name << " requests a positive high five!" << std::endl;
 }

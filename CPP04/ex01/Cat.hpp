@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:46:23 by asbouani          #+#    #+#             */
-/*   Updated: 2026/01/05 13:55:01 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/01/09 16:53:53 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ class Cat : public Animal
         ~Cat();
         
         void makeSound() const;
+        void setIdea(int index, const std::string& idea);
+        std::string getIdea(int index) const;
 };
 
 #endif

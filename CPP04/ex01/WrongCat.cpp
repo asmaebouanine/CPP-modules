@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 21:51:58 by asbouani          #+#    #+#             */
-/*   Updated: 2026/01/05 15:18:35 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/01/13 20:16:31 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ WrongCat::WrongCat(const WrongCat& other) : WrongAnimal(other)
 WrongCat& WrongCat::operator=(const WrongCat& other)
 {
     std::cout << "WrongCat is assigned!" << std::endl;
-    if (this != &other)
-        WrongAnimal::operator=(other);
+    WrongAnimal::operator=(other);
     return (*this);
 }
 void WrongCat::makeSound() const

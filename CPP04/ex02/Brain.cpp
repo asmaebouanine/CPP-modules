@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 18:29:28 by asbouani          #+#    #+#             */
-/*   Updated: 2026/01/05 18:29:29 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/01/13 16:18:53 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,17 @@ Brain& Brain::operator=(const Brain& other)
             ideas[i] = other.ideas[i];
     }
     return (*this);
+}
+void Brain::setIdea(int index,const std::string idea)
+{
+    if (index >= 0 && index < 100)
+        ideas[index] = idea;
+}
+std::string Brain::getIdea(int index) const
+{
+    if (index >= 0 && index < 100)
+        return (ideas[index]);
+    return ("Invalid indes");
 }
 Brain::~Brain()
 {

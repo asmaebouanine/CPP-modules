@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 18:30:53 by asbouani          #+#    #+#             */
-/*   Updated: 2026/01/05 18:30:54 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/01/13 20:17:37 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,23 @@
 Dog::Dog() : Animal()
 {
     type = "Dog";
+    std::cout << "Dog is created!" << std::endl;
     brain = new Brain();
-    std::cout << "Dog is created" << std::endl;
 }
 Dog::Dog(const Dog& other) : Animal(other)
 {
+    std::cout << "Dog is copied!" << std::endl;
+    brain = new Brain();
     *brain = *other.brain;
-    std::cout << "Dog copy constructor is called" << std::endl;
 }
 Dog& Dog::operator=(const Dog& other) 
 {
-    std::cout << "Dog copy assignment operator is called" << std::endl;
-    if (this != &other)
+    std::cout << "Dog is assigned!" << std::endl;
+   if (this != &other)
     {
         Animal::operator=(other);
+        delete brain;
+        brain = new Brain();
         *brain = *other.brain;
     }
     return (*this);        
@@ -37,8 +40,16 @@ void Dog::makeSound() const
 {
     std::cout << "WOOF" << std::endl;
 }
+void Dog::setIdea(int index, const std::string& idea)
+{
+    brain->setIdea(index, idea);
+}
+std::string Dog::getIdea(int index) const
+{
+    return (brain->getIdea(index));
+}
 Dog::~Dog()
 {
-    std::cout << "Dog is destroyed" << std::endl;
     delete brain;
+    std::cout << "Dog is destroyed!" << std::endl;
 }

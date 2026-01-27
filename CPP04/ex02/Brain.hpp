@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 18:29:53 by asbouani          #+#    #+#             */
-/*   Updated: 2026/01/05 18:29:54 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/01/11 09:58:58 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,8 @@ class Brain
         Brain(const Brain& other);
         Brain& operator=(const Brain& other);
         ~Brain();
+        
+        void setIdea(int index,const std::string idea);
+        std::string getIdea(int index) const;
 };
 #endif

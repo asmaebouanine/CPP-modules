@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 15:43:58 by asbouani          #+#    #+#             */
-/*   Updated: 2026/01/05 19:44:09 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/01/13 18:52:42 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int main()
     const Animal* j = new Dog();
     const Animal* i = new Cat();
     
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
+    std::cout << j->getType() << std::endl;
+    std::cout << i->getType() << std::endl;
     j->makeSound();
     i->makeSound();
     meta->makeSound();
@@ -32,7 +32,7 @@ int main()
     std::cout << "\n=== WRONG TEST ===" << std::endl;
     const WrongAnimal* a = new WrongAnimal();
     const WrongAnimal* c = new WrongCat();
-    std::cout << c->getType() << " " << std::endl;
+    std::cout << c->getType() << std::endl;
     c->makeSound();
     a->makeSound();
     

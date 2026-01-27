@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/03 18:46:57 by asbouani          #+#    #+#             */
-/*   Updated: 2026/01/09 16:54:16 by asbouani         ###   ########.fr       */
+/*   Created: 2026/01/06 14:30:13 by asbouani          #+#    #+#             */
+/*   Updated: 2026/01/13 21:23:35 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
+#include "Cure.hpp"
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+Cure::Cure() : AMateria("cure") {}
 
-class Dog : public Animal
+Cure::Cure(const Cure& other) : AMateria(other) {}
+
+Cure& Cure::operator=(const Cure& other)
 {
-    private:
-        Brain* brain;
-        
-    public:
-        Dog();
-        Dog(const Dog& other);
-        Dog& operator=(const Dog& other);
-        ~Dog();
 
-        void makeSound() const;
-        void setIdea(int index, const std::string& idea);
-        std::string getIdea(int index) const;
-};
-
-#endif
+    AMateria::operator=(other);
+    return (*this);
+}
+AMateria* Cure::clone() const
+{
+    return (new Cure(*this));
+}
+void Cure::use(ICharacter& target)
+{
+    std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;   
+}
+Cure::~Cure() {}

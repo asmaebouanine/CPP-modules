@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 18:32:02 by asbouani          #+#    #+#             */
-/*   Updated: 2026/01/05 18:32:03 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/01/11 10:26:32 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class WrongAnimal
         WrongAnimal();
         WrongAnimal(const WrongAnimal& other);
         WrongAnimal& operator=(const WrongAnimal& other);
-        virtual ~WrongAnimal();
+        ~WrongAnimal();
         
         void makeSound() const;
         std::string getType() const;

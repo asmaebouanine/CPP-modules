@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 18:30:14 by asbouani          #+#    #+#             */
-/*   Updated: 2026/01/05 18:30:16 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/01/13 20:17:21 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,23 @@
 Cat::Cat() : Animal()
 {
     type = "Cat";
-    brain = new Brain();
     std::cout << "Cat is created" << std::endl;
+    brain = new Brain();
 }
 Cat::Cat(const Cat& other) : Animal(other)
 {
+    std::cout << "Cat is copied!" << std::endl;
+    brain = new Brain();
     *brain = *other.brain;
-    std::cout << "Cat copy constructor is called" << std::endl;
 }
 Cat& Cat::operator=(const Cat& other)
 {
-    std::cout << "Cat copy assignment operator called" << std::endl;
+    std::cout << "Cat is assigned!" << std::endl;
     if (this != &other)
     {
         Animal::operator=(other);
+        delete brain;
+        brain = new Brain();
         *brain = *other.brain;
     }
     return (*this);
@@ -37,8 +40,16 @@ void Cat::makeSound() const
 {
     std::cout << "MOEW" << std::endl;
 }
+void Cat::setIdea(int index, const std::string& idea)
+{
+    brain->setIdea(index, idea);
+}
+std::string Cat::getIdea(int index) const
+{
+    return (brain->getIdea(index));
+}
 Cat::~Cat()
 {
-    std::cout << "Cat is destroyed" << std::endl;
     delete brain;
+    std::cout << "Cat is destroyed" << std::endl;
 }

@@ -1,14 +1,14 @@
-NAME = AAnimal
+NAME = AMateria
 
 CXX = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
+SRCS = main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-HDRS = Animal.hpp Dog.cpp Cat.cpp WrongAnimal.hpp WrongCat.hpp Brain.hpp
+HDRS = AMateria.hpp Ice.hpp Cure.hpp Character.hpp MateriaSource.hpp ICharacter.hpp IMateriaSource.hpp
 
 all: $(NAME)
 

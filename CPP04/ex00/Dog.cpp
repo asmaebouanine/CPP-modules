@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 15:11:07 by asbouani          #+#    #+#             */
-/*   Updated: 2026/01/05 19:47:03 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/01/13 20:13:02 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ Dog::Dog(const Dog& other) : Animal(other)
 Dog& Dog::operator=(const Dog& other) 
 {
     std::cout << "Dog is assigned!" << std::endl;
-    if (this != &other)
-        Animal::operator=(other);
+    Animal::operator=(other);
     return (*this);        
 }
 void Dog::makeSound() const

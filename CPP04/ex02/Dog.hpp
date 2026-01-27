@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 18:31:09 by asbouani          #+#    #+#             */
-/*   Updated: 2026/01/05 18:31:10 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/01/09 19:26:48 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ class Dog : public Animal
         ~Dog();
 
         void makeSound() const;
+        void setIdea(int index, const std::string& idea);
+        std::string getIdea(int index) const;
 };
 
 #endif

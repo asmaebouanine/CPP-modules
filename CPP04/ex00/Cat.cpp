@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 15:04:20 by asbouani          #+#    #+#             */
-/*   Updated: 2026/01/05 19:46:10 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/01/13 20:12:31 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ Cat::Cat(const Cat& other) : Animal(other)
 Cat& Cat::operator=(const Cat& other)
 {
     std::cout << "Cat is assigned!" << std::endl;
-    if (this != &other)
-        Animal::operator=(other);
+    Animal::operator=(other);
     return (*this);
 }
 void Cat::makeSound() const

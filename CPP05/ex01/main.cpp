@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 18:53:26 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/04 18:58:43 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/15 20:58:41 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,7 @@ int main()
         c.decrementGrade();
         std::cout << c << std::endl;
     }
-    catch(Bureaucrat::GradeTooHighException& e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-    catch(Bureaucrat::GradeTooLowException& e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-    
-    catch(Form::GradeTooHighException& e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-    catch(Form::GradeTooLowException& e)
+    catch(std::exception& e)
     {
         std::cout << e.what() << std::endl;
     }

@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 15:49:15 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/15 21:39:59 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/22 23:04:14 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
     return (*this);
 }
 
-RobotomyRequestForm::~RobotomyRequestForm() {}
-
 void RobotomyRequestForm::executeAction()  const
 {
     std::cout << "* VRRRRRR   CLANK *" << std::endl;
@@ -38,3 +36,5 @@ void RobotomyRequestForm::executeAction()  const
     else
         std::cout << "The robotomy has " << _target << " failed" << std::endl;
 }
+
+RobotomyRequestForm::~RobotomyRequestForm() {}

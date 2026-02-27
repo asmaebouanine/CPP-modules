@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 18:14:31 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/09 18:14:45 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/24 21:01:27 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ class Bureaucrat;
 class AForm
 {
     private:
-        const std::string _name; //name of the form
-        const int         _gradeSign; // the minimum grade requered to sign the form
-        const int         _gradeExec;  // 
-        bool              _signed; // the status of the contrat if signed of not
+        const std::string _name;
+        const int         _gradeSign;
+        const int         _gradeExec;
+        bool              _signed;
     
     public:
         AForm();
@@ -42,8 +42,8 @@ class AForm
         
         void    beSigned(Bureaucrat& b);
         
-        void execute(Bureaucrat const &executor) const; //add function
-        virtual void executeAction() const = 0; // new
+        void execute(Bureaucrat const &executor) const;
+        virtual void executeAction() const = 0; 
         
         
         class GradeTooHighException : public std::exception

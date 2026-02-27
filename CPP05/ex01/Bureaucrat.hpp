@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 15:02:03 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/15 20:59:58 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/27 22:21:04 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,27 +31,26 @@ class Bureaucrat
         Bureaucrat(const Bureaucrat& other);
         Bureaucrat& operator=(const Bureaucrat& other);
         ~Bureaucrat();
-        //getters
+        
         std::string getName() const;
         int getGrade() const;
-        //grade manipulation
         void incrementGrade();
         void decrementGrade();
         
-        void signForm(Form& f);  //add function 
-        //exception
+        void signForm(Form& f);
+       
         class GradeTooHighException : public std::exception
         {
             public:
-                const char* what() const throw(); // function that describe the error
+                const char* what() const throw();
         };
         class GradeTooLowException : public std::exception
         {
             public:
-                const char* what() const throw(); // function that describe the error
+                const char* what() const throw();
         };   
 };
-//operator overload
+
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& b);
 
 #endif

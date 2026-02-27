@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 18:48:33 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/12 18:48:35 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/25 23:40:13 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@ AForm& AForm::operator=(const AForm& other)
         _signed = other._signed;
     return (*this);
 }
-
-AForm::~AForm() {}
-
 std::string AForm::getName() const
 {
     return (_name);
@@ -49,13 +46,19 @@ bool AForm::getSigned() const
 {
     return (_signed);
 }
-
 void AForm::beSigned(Bureaucrat& b)
 {
-    if (b.getGrade() <= getGradeSign())
-        _signed = true;
-    else
+    if (b.getGrade() > getGradeSign())
         throw GradeTooLowException();
+    _signed = true;
+}
+void AForm::execute(Bureaucrat const & executor) const
+{
+    if (!_signed)
+        throw AForm::FormNotSignedException();
+    if (executor.getGrade() > _gradeExec)
+        throw AForm::GradeTooLowException();
+    executeAction();
 }
 const char* AForm::GradeTooHighException::what() const throw()
 {
@@ -69,17 +72,11 @@ const char* AForm::FormNotSignedException::what() const throw()
 {
     return ("Form not signed!");
 }
-void AForm::execute(Bureaucrat const & executor) const
-{
-    if (!_signed)
-        throw AForm::FormNotSignedException();
-    if (executor.getGrade() > _gradeExec)
-        throw AForm::GradeTooLowException();
-    executeAction();
-}
 std::ostream& operator<<(std::ostream& out, const AForm& f)
 {
     out << f.getName() << " Grade to Sign " << f.getGradeSign() << " Grade to Execute "
-        << f.getGradeExec() << " signed " << f.getSigned() << ".";
+    << f.getGradeExec() << " signed " << f.getSigned() << ".";
     return (out);
 }
+
+AForm::~AForm() {}

@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 21:35:58 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/15 20:56:23 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/25 21:30:26 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,34 @@
 
 int main()
 {
+    std::cout << "=== TEST 1 ===" << std::endl;
     try
     {
         Bureaucrat b("Alice", 3);
-        Bureaucrat c("Asmae", 0);
         
         std::cout << b << std::endl;
         b.incrementGrade();
         b.incrementGrade();
         std::cout << b << std::endl;
+    }
+    catch(std::exception& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    
+    std::cout << "\n=== TEST 2 ===" << std::endl;
+    try
+    {
+        Bureaucrat c("Bob", 150);
         
         std::cout << c << std::endl;
         c.decrementGrade();
         std::cout << c << std::endl;
     }
-    catch(std::exception &e)
+    catch(const std::exception& e)
     {
         std::cout << e.what() << std::endl;
     }
-    std::cout << "the program ended!!" << std::endl; 
+    
+    std::cout << "End of program!" << std::endl; 
 }

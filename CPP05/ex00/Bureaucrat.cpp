@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 19:01:17 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/15 20:55:58 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/27 17:50:48 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {}
 
-Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(grade)
+Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name), _grade(grade)
 {
+    
     if (_grade < 1)
-        throw Bureaucrat::GradeTooHighException(); 
+        throw GradeTooHighException(); 
     if (_grade > 150)
-        throw Bureaucrat::GradeTooLowException();
+        throw GradeTooLowException();
         
 }
 Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(other._grade) {}
@@ -30,7 +31,6 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
         _grade = other._grade;
     return (*this);
 }
-Bureaucrat::~Bureaucrat() {}
 
 std::string Bureaucrat::getName() const
 {
@@ -43,13 +43,13 @@ int Bureaucrat::getGrade() const
 void Bureaucrat::incrementGrade()
 {
     if (_grade <= 1)
-        throw Bureaucrat::GradeTooHighException();
+        throw GradeTooHighException();
     _grade--;
 }
 void Bureaucrat::decrementGrade()
 {
     if (_grade >= 150)
-        throw Bureaucrat::GradeTooLowException();
+        throw GradeTooLowException();
     _grade++;
 }
 const char* Bureaucrat::GradeTooHighException::what() const throw()
@@ -62,6 +62,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 }
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& b)
 {
-     out << b.getName() << ", bureaucrat grade " << b.getGrade() << ".";
-     return (out);
+    out << b.getName() << ", bureaucrat grade " << b.getGrade() << ".";
+    return (out);
 }
+Bureaucrat::~Bureaucrat() {}

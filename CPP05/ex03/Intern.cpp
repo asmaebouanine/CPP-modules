@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 15:30:13 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/15 21:25:45 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/25 23:40:47 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@ Intern::Intern(const Intern& other)
 {
     (void)other;
 }
-
 Intern& Intern::operator=(const Intern& other)
 {
     (void)other;
     return (*this);
 }
-Intern::~Intern() {}
 
 AForm* Intern::makePresidential(std::string target)
 {
@@ -51,7 +49,7 @@ AForm* Intern::makeForm(std::string name, std::string target)
             return (creationsForm[i](target));
         }
     }
-
     std::cout << "Intert cannot create " << name << std::endl;
     return (NULL);
 }
+Intern::~Intern() {}

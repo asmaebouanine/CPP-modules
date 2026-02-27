@@ -6,54 +6,71 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 16:26:05 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/15 21:48:51 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/26 00:34:23 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
-#include <cstdlib>
 #include <ctime>
 
 int main()
 {
     std::srand(std::time(NULL));
-    try{
-        Bureaucrat alice("Alice", 1);
-        Bureaucrat alex("alex", 150);
+    std::cout << "=== TEST 1: PRESIDENTIAL PARDON FORM ===" << std::endl;
+    try
+    {
+        Bureaucrat charlie("Charlie", 3);
+        PresidentialPardonForm pardon("Marvin");
         
-        PresidentialPardonForm p("Criminal");
-        RobotomyRequestForm r("Bender");
-        ShrubberyCreationForm s("Garden");
+        std::cout << charlie << std::endl;
+        std::cout << pardon << std::endl;
         
-        std::cout << "=== test shrubbery === " << std::endl;
-        
-        alice.signForm(s);
-        
-        alex.signForm(s);
-        
-        alice.executeForm(s);
-        
-        alex.executeForm(s);
-        
-        std::cout << "\n=== Test robotomy === " << std::endl;
-        
-        alice.signForm(r);
-        alice.executeForm(r);
-        alice.executeForm(r);
-        
-        std::cout << "\n=== Test Presidential === " << std::endl;
-        
-        alice.signForm(p);
-        alice.executeForm(p);
-        
-        std::cout << alice << std::endl;
-        alice.incrementGrade();
+        charlie.signForm(pardon);
+        charlie.executeForm(pardon);
+        std::cout << pardon << std::endl;
+
     }
-    catch(std::exception& e){
-        std::cout << "Catch all exception: " << e.what() << std::endl;
+    catch(std::exception& e)
+    {
+        std::cout << e.what() << std::endl;
     }
     
-    std::cout << "program is finished!" << std::endl; 
+    std::cout << "\n=== TEST 2: ROBOTOMY REQUEST FORM ===" << std::endl;
+    try
+    {
+        Bureaucrat bob("Bob", 40);
+        RobotomyRequestForm robot("Bender");
+
+        std::cout << bob << std::endl;
+        std::cout << robot << std::endl;
+        
+        bob.signForm(robot);
+        bob.executeForm(robot);
+        std::cout << robot << std::endl;
+    }
+    catch(std::exception& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    std::cout << "\n=== TEST 3: SHRUBBYRY CREATION FORM ===" << std::endl;
+    try
+    {
+        Bureaucrat alice("Alice", 149);
+        ShrubberyCreationForm shrub("Home");
+        
+        std::cout << alice << std::endl;
+        std::cout << shrub << std::endl;
+        
+        alice.signForm(shrub);
+        alice.executeForm(shrub);
+        std::cout << shrub << std::endl;
+    }
+    catch(std::exception& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    
+    std::cout << "End of program" << std::endl; 
 }

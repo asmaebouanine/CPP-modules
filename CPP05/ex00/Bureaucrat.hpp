@@ -6,16 +6,16 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 15:33:49 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/15 20:52:23 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/27 20:54:10 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT
-#define BUREAUCRAT
+#ifndef BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
 
 #include <iostream>
 #include <exception>
-#include <typeinfo>
+
 class Bureaucrat
 {
     private:
@@ -24,29 +24,28 @@ class Bureaucrat
     
     public:
         Bureaucrat();
-        Bureaucrat(const std::string name, int grade);
+        Bureaucrat(const std::string& name, int grade);
         Bureaucrat(const Bureaucrat& other);
         Bureaucrat& operator=(const Bureaucrat& other);
         ~Bureaucrat();
-        //getters
+        
         std::string getName() const;
         int getGrade() const;
-        //grade manipulation
         void incrementGrade();
         void decrementGrade();
-        //exception
+       
         class GradeTooHighException : public std::exception
         {
             public:
-                const char* what() const throw(); // function that describe the error
+                const char* what() const throw();
         };
         class GradeTooLowException : public std::exception
         {
             public:
-                const char* what() const throw(); // function that describe the error
+                const char* what() const throw();
         };   
 };
-//operator overload
+
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& b);
 
 #endif

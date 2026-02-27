@@ -6,37 +6,49 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 18:53:26 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/15 20:58:41 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/27 20:59:35 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 int main()
 {
+    std::cout << "=== TEST 1 ===" << std::endl;
     try
     {
-        Bureaucrat b("Alice", 6);
-        Bureaucrat c("Asmae", 150);
-        Form f("texForm", 77, 5);
-        Form m("Second form", 2, 6);
-        b.signForm(f);
-        f.beSigned(b);
-    
-        std::cout << f << std::endl;
-        
-        std::cout << b << std::endl;
-        b.incrementGrade();
-        std::cout << b << std::endl;
-        
-        std::cout << c << std::endl;
-        c.decrementGrade();
-        std::cout << c << std::endl;
+      Bureaucrat b("Alice", 44);
+      Form f("taxForm", 44, 66);
+      
+      std::cout << b << std::endl;
+      std::cout << f << std::endl;
+      
+      b.signForm(f);
+      std::cout << f << std::endl;
     }
     catch(std::exception& e)
     {
         std::cout << e.what() << std::endl;
     }
-    std::cout << "program is finished!" << std::endl;
     
+    std::cout << "\n=== TEST 2 ===" << std::endl;
+    try
+    {
+        Bureaucrat c("Bob", 3);
+        Form e("testForm", 2, 2);
+        
+        std::cout << c << std::endl;
+        std::cout << e << std::endl;
+        
+        c.signForm(e);
+        std::cout << e << std::endl;
+        
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    
+    std::cout << "End of program" << std::endl;
 }

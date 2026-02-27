@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 18:49:11 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/12 18:49:13 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/22 23:11:20 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@ PresidentialPardonForm::PresidentialPardonForm() : AForm(), _target("Default") {
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm",25, 5), _target(target) {}
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other) : AForm(other) 
-{
-    _target = other._target;
-}
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other) : AForm(other), _target(other._target) {}
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& other)
 {
@@ -31,9 +28,9 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
     return (*this);
 }
 
-PresidentialPardonForm::~PresidentialPardonForm() {}
-
 void PresidentialPardonForm::executeAction() const
 {
     std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
+
+PresidentialPardonForm::~PresidentialPardonForm() {}

@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:19:30 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/15 21:14:17 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/26 00:10:07 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main()
     Intern intern;
     Bureaucrat b("bureacrat", 1);
 
-    std::cout << "=== test presidential pardon ===" << std::endl;
+    std::cout << "=== TEST 1: PRESIDENTIAL PARDON ===" << std::endl;
     AForm* ppf;
     ppf = intern.makeForm("presidential pardon", "Criminal");
     if (ppf)
@@ -27,7 +27,7 @@ int main()
         delete (ppf);
     }
 
-    std::cout << "\n=== test robotomy pardon ===" << std::endl;
+    std::cout << "\n=== TEST 2: ROBOTOMY REQUEST ===" << std::endl;
     AForm* rpf;
     rpf = intern.makeForm("robotomy request", "Bender");
     if (rpf)
@@ -37,7 +37,7 @@ int main()
         delete (rpf);
     }
 
-    std::cout << "\n=== test shrubbery creation ===" << std::endl;
+    std::cout << "\n=== TEST 3: SHRUBBERY CREATION ===" << std::endl;
     AForm* scf;
     scf = intern.makeForm("shrubbery creation", "garden");
     if (scf)
@@ -47,7 +47,7 @@ int main()
         delete (scf);
     }
     
-    std::cout << "\n=== test unknow form ===" << std::endl;
+    std::cout << "\n=== TEST 4: UNKWON FORM ===" << std::endl;
     AForm* uf;
     uf = intern.makeForm("test form", "test");
     if (uf)
@@ -55,7 +55,6 @@ int main()
         b.signForm(*uf);
         delete uf;
     }
-    std::cout << "program is finished!" << std::endl;
-    
+    std::cout << "\n End of program" << std::endl;
 }
 

@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 15:05:03 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/04 18:17:11 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/27 22:20:12 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ class Bureaucrat;
 class Form
 {
     private:
-        const std::string _name; //name of the form
-        const int         _gradeSign; // the minimum grade requered to sign the form
-        const int         _gradeExec;  // 
-        bool              _signed; // the status of the contrat if signed of not
+        const std::string _name; 
+        const int         _gradeSign;
+        const int         _gradeExec;
+        bool              _signed;
     
     public:
         Form();

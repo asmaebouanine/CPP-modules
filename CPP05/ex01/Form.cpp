@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 20:20:02 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/04 18:58:12 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/27 22:20:07 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ Form& Form::operator=(const Form& other)
     return (*this);
 }
 
-Form::~Form() {}
-
 std::string Form::getName() const
 {
     return (_name);
@@ -52,23 +50,24 @@ bool Form::getSigned() const
 
 void Form::beSigned(Bureaucrat& b)
 {
-    if (b.getGrade() <= getGradeSign())
-        _signed = true;
-    else
+    if (b.getGrade() > getGradeSign())
         throw GradeTooLowException();
+    _signed = true;
 }
 const char* Form::GradeTooHighException::what() const throw()
 {
-    return ("Form grade is too high");
+    return ("Form grade is too high!");
 }
 const char* Form::GradeTooLowException::what() const throw()
 {
-    return ("From grade is too low");
+    return ("Form grade is too low!");
 }
 
 std::ostream& operator<<(std::ostream& out, const Form& f)
 {
     out << f.getName() << " Grade to Sign " << f.getGradeSign() << " Grade to Execute "
-        << f.getGradeExec() << " signed " << f.getSigned() << ".";
+    << f.getGradeExec() << " signed " << f.getSigned() << ".";
     return (out);
 }
+
+Form::~Form() {}

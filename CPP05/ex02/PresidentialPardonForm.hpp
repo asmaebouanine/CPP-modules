@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 22:12:17 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/09 15:53:57 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/21 19:38:22 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class PresidentialPardonForm : public AForm
 {
     private:
-        std::string _target; //person to be pardoned
+        std::string _target;
         
     public:
         PresidentialPardonForm();
@@ -29,4 +29,5 @@ class PresidentialPardonForm : public AForm
         
         void executeAction() const;
 };
+
 #endif

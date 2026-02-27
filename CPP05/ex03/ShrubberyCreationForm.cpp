@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 18:49:41 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/13 15:26:12 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/25 23:41:03 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,12 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
     }
     return(*this);
 }
-ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 void ShrubberyCreationForm::executeAction() const
 {
     std::ofstream outfile((_target + "shrubbery").c_str());
     if (outfile.is_open())
-    {
-        // outfile << "     //\\\\" << std::endl;
-        // outfile << "    //  \\\\" << std::endl;
-        // outfile << "   //    \\\\" << std::endl;
-        // outfile << "  //      \\\\" << std::endl;
-        // outfile << " //        \\\\" << std::endl;
-        // outfile << "///////\\\\\\\\\\\\\\" << std::endl;
-        // outfile << "     | |" << std::endl;
-        // outfile << "     | |" << std::endl;
-        // outfile << "     | |" << std::endl;
-        // outfile << "     | |" << std::endl;
-        //  outfile.close(); 
+    { 
         outfile << "       -" << std::endl;
         outfile << "    /~~   \\" << std::endl; 
         outfile << " /         ~~\\" << std::endl;
@@ -54,8 +42,9 @@ void ShrubberyCreationForm::executeAction() const
         outfile << "- -   | | - " << std::endl;
         outfile << "  _ - | |   -" << std::endl;
         outfile << "     // \\\\" << std::endl;
-        outfile.close();
     }
     else
         std::cout << "could not create the file" << std::endl;
 }
+
+ShrubberyCreationForm::~ShrubberyCreationForm() {}

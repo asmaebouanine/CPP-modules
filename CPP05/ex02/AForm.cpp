@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 20:41:46 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/25 23:37:55 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/28 20:13:23 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,15 @@ void AForm::execute(Bureaucrat const & executor) const
 }
 const char* AForm::GradeTooHighException::what() const throw()
 {
-    return ("Form grade is too high!");
+    return ("Form grade is too high.");
 }
 const char* AForm::GradeTooLowException::what() const throw()
 {
-    return ("Form grade is too low!");
+    return ("Form grade is too low.");
 }
 const char* AForm::FormNotSignedException::what() const throw()
 {
-    return ("Form not signed!");
+    return ("Form not signed.");
 }
 std::ostream& operator<<(std::ostream& out, const AForm& f)
 {

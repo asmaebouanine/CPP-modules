@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 20:20:02 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/27 22:20:07 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/28 19:55:50 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ void Form::beSigned(Bureaucrat& b)
 }
 const char* Form::GradeTooHighException::what() const throw()
 {
-    return ("Form grade is too high!");
+    return ("Form grade is too high.");
 }
 const char* Form::GradeTooLowException::what() const throw()
 {
-    return ("Form grade is too low!");
+    return ("Form grade is too low.");
 }
 
 std::ostream& operator<<(std::ostream& out, const Form& f)

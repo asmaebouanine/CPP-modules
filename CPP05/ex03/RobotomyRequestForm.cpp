@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 18:49:26 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/22 23:11:36 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/28 21:06:24 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void RobotomyRequestForm::executeAction()  const
 {
     std::cout << "* VRRRRRR   CLANK *" << std::endl;
     if (std::rand() % 2 == 0)
-    std::cout << _target << "Has been robotomized successfully!" << std::endl;
+        std::cout << _target << " has been robotomized successfully!" << std::endl;
     else
-    std::cout << "The robotomy has " << _target << " failed" << std::endl;
+        std::cout << "The robotomy has " << _target << " failed" << std::endl;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm() {}

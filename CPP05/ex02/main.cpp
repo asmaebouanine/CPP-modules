@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 16:26:05 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/26 00:34:23 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/28 20:24:38 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int main()
     std::cout << "\n=== TEST 2: ROBOTOMY REQUEST FORM ===" << std::endl;
     try
     {
-        Bureaucrat bob("Bob", 40);
+        Bureaucrat bob("Bob", 42);
         RobotomyRequestForm robot("Bender");
 
         std::cout << bob << std::endl;
@@ -72,5 +72,5 @@ int main()
         std::cout << e.what() << std::endl;
     }
     
-    std::cout << "End of program" << std::endl; 
+    std::cout << "End of program!" << std::endl; 
 }

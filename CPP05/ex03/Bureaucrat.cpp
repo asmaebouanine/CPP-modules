@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 18:48:53 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/25 23:32:53 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/28 21:04:36 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,11 @@ void Bureaucrat::executeForm(AForm const &f)
 }
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-    return ("Grade is too high!");
+    return ("Grade is too high.");
 }
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-    return ("Grade is too low!");
+    return ("Grade is too low.");
 }
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& b)
 {

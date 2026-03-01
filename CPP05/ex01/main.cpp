@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 18:53:26 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/27 20:59:35 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/28 20:11:11 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int main()
     try
     {
         Bureaucrat c("Bob", 3);
-        Form e("testForm", 2, 2);
+        Form e("reportForm", 2, 2);
         
         std::cout << c << std::endl;
         std::cout << e << std::endl;
@@ -50,5 +50,5 @@ int main()
         std::cout << e.what() << std::endl;
     }
     
-    std::cout << "End of program" << std::endl;
+    std::cout << "End of program!" << std::endl;
 }

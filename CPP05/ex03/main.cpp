@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:19:30 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/26 00:10:07 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/28 20:34:05 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main()
 {
     Intern intern;
-    Bureaucrat b("bureacrat", 1);
+    Bureaucrat b("bureacrat", 66);
 
     std::cout << "=== TEST 1: PRESIDENTIAL PARDON ===" << std::endl;
     AForm* ppf;
@@ -47,14 +47,14 @@ int main()
         delete (scf);
     }
     
-    std::cout << "\n=== TEST 4: UNKWON FORM ===" << std::endl;
+    std::cout << "\n=== TEST 4: UNKNWON FORM ===" << std::endl;
     AForm* uf;
-    uf = intern.makeForm("test form", "test");
+    uf = intern.makeForm("unknown form", "test");
     if (uf)
     {
         b.signForm(*uf);
         delete uf;
     }
-    std::cout << "\n End of program" << std::endl;
+    std::cout << "End of program!" << std::endl;
 }
 

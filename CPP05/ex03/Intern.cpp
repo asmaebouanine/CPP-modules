@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 15:30:13 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/25 23:40:47 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/28 21:05:09 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ Intern& Intern::operator=(const Intern& other)
     (void)other;
     return (*this);
 }
-
 AForm* Intern::makePresidential(std::string target)
 {
     return (new PresidentialPardonForm(target)); 
@@ -45,11 +44,11 @@ AForm* Intern::makeForm(std::string name, std::string target)
     {
         if (name == namesForm[i])
         {
-            std::cout << "Intert creates " << name << std::endl;
+            std::cout << "Intern creates " << name << std::endl;
             return (creationsForm[i](target));
         }
     }
-    std::cout << "Intert cannot create " << name << std::endl;
+    std::cout << "Form name is unknown " << name << std::endl;
     return (NULL);
 }
 Intern::~Intern() {}

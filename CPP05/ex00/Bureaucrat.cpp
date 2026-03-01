@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 19:01:17 by asbouani          #+#    #+#             */
-/*   Updated: 2026/02/27 17:50:48 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/02/28 20:01:02 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ void Bureaucrat::decrementGrade()
 }
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-    return ("Grade is too high");
+    return ("Grade is too high.");
 }
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-    return ("Grade is too low");
+    return ("Grade is too low.");
 }
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& b)
 {

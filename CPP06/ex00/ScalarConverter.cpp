@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 23:12:23 by asbouani          #+#    #+#             */
-/*   Updated: 2026/03/12 21:55:36 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/03/14 00:28:17 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ bool isDouble(std::string str)
     bool digit = false;
     if (str[i] == '-' || str[i] == '+')
         i++;
-    for (; i < (int)str.length() - 1; i++)
+    for (; i < (int)str.length(); i++)
     {
         if (str[i] == '.')
         {
@@ -88,6 +88,27 @@ bool isDouble(std::string str)
             digit = true;
     }
     return (dot && digit);
+}
+void printType(char c, long i, float f, double d)
+{
+    if (d < 0 || d > 127)
+        std::cout << "char: impossible\n";
+    else if (d < 32 || d == 127)
+        std::cout << "char: Non displayable\n";
+    else
+        std::cout << "char: '" << c << "'\n";
+    if(i < std::numeric_limits<int>::min() || i > std::numeric_limits<int>::max())
+        std::cout << "int: impossible" << std::endl;
+    else
+        std::cout << "int: " << i << std::endl;
+    if (f == std::floor(f) && f < 1000000.0f && f > -1000000.0f)
+        std::cout << "float: " << f << ".0f" << std::endl;
+    else 
+        std::cout << "float: " << f << "f" << std::endl;
+    if (d == std::floor(d) && d < 1000000.0f && d > -1000000.0f)
+        std::cout << "double: " << d << ".0" << std::endl;
+    else
+        std::cout << "double: " << d << std::endl;
 }
 
 void ScalarConverter::convert(std::string str)
@@ -110,73 +131,24 @@ void ScalarConverter::convert(std::string str)
     else if (str.length() == 1 && !isdigit(str[0]) && isprint(str[0]))
     {
         char c = str[0];
-        std::cout << "char: '" << c << "'\n";
-        std::cout << "int: " << static_cast<int>(c) << "\n";
-        std::cout << "float: " << static_cast<float>(c) << ".0f\n";
-        std::cout << "double: " << static_cast<double>(c) << ".0\n";
+        printType(c, static_cast<int>(c), static_cast<float>(c), static_cast<double>(c));
     }
     else if (isInt(str))
     {
-        long num = strtol(str.c_str(), NULL, 10);
-        if (num < 0 || num > 127)
-            std::cout << "char: impossible\n";
-        else if (num < 32 || num == 127)
-            std::cout << "char: Non displayable\n";
-        else
-            std::cout << "char: '" << static_cast<char>(num) << "'\n";
-        if (num < std::numeric_limits<int>::min() || num > std::numeric_limits<int>::max())
-            std::cout << "int: impossible\n";
-        else
-            std::cout << "int: " << num << "\n";
-        std::cout << "float: " << static_cast<float>(num) << ".0f\n";
-        std::cout << "double: " << static_cast<double>(num) << ".0\n";
+        long i = static_cast<long>(strtol(str.c_str(), NULL, 10));
+        printType(static_cast<char>(i), i, static_cast<float>(i), static_cast<double>(i));
     }
     else if (isFloat(str))
     {
-        float f = strtof(str.c_str(), NULL);
-        if (f < 0 || f > 127)
-            std::cout << "char: impossible\n";
-        else if (f < 32 || f == 127)
-            std::cout << "char: Non displayable\n";
-        else
-            std::cout << "char: '" << static_cast<char>(f) << "'\n";
-        // int
-        if (f < std::numeric_limits<int>::min() || f > std::numeric_limits<int>::max())
-            std::cout << "int: impossible\n";
-        else
-            std::cout << "int: " << static_cast<int>(f) << "\n";
-        // float
-        if (f > std::numeric_limits<float>::max() || f < -std::numeric_limits<float>::max())
-            std::cout << "float: inff\n";
-        else
-            std::cout << "float: " << f << "f\n";
-        // double
-        if (static_cast<double>(f) > std::numeric_limits<double>::max() || 
-            static_cast<double>(f) < -std::numeric_limits<double>::max())
-            std::cout << "double: inf\n";
-        else
-            std::cout << "double: " << static_cast<double>(f) << "\n";
+        
+        float f = static_cast<float>(strtof(str.c_str(), NULL));
+        printType(static_cast<char>(f), static_cast<long>(f), f, static_cast<double>(f));
     }
     else if (isDouble(str))
     {
-       double d = strtod(str.c_str(), NULL);
-        // char
-        if (d < 0 || d > 127)
-            std::cout << "char: impossible\n";
-        else if (d < 32 || d == 127)
-            std::cout << "char: Non displayable\n";
-        else
-            std::cout << "char: '" << static_cast<char>(d) << "'\n";
-        // int
-        if (d < std::numeric_limits<int>::min() || d > std::numeric_limits<int>::max())
-            std::cout << "int: impossible\n";
-        else
-            std::cout << "int: " << static_cast<int>(d) << "\n";
-        // float
-        std::cout << "float: " << static_cast<float>(d) << "f\n";
-        // double
-        std::cout << "double: " << d << "\n";
+       double d = static_cast<double>(strtod(str.c_str(), NULL));
+       printType(static_cast<char>(d), static_cast<long>(d), static_cast<float>(d), d);
     }
     else
-        std::cout << "Type ont recognized" << std::endl;
+        std::cout << "Type not recognized" << std::endl;
 }

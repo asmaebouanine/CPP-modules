@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 23:12:23 by asbouani          #+#    #+#             */
-/*   Updated: 2026/03/14 00:28:17 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/03/15 22:20:38 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void printType(char c, long i, float f, double d)
     if(i < std::numeric_limits<int>::min() || i > std::numeric_limits<int>::max())
         std::cout << "int: impossible" << std::endl;
     else
-        std::cout << "int: " << i << std::endl;
+        std::cout << "int: " << static_cast<int>(i) << std::endl;
     if (f == std::floor(f) && f < 1000000.0f && f > -1000000.0f)
         std::cout << "float: " << f << ".0f" << std::endl;
     else 

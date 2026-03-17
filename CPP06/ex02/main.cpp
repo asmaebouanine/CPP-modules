@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 21:07:30 by asbouani          #+#    #+#             */
-/*   Updated: 2026/03/12 21:39:04 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/03/17 01:38:38 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@ int main()
     std::cout << "Identify with reference: ";
     identify(*test);
     
-    delete test;
-    
+    delete test; 
 }

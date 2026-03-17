@@ -8,11 +8,11 @@ SRCS = main.cpp Base.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-HRD = Base.hpp
+HDR = Base.hpp
 
 all: $(NAME)
 
-%.o: %.cpp $(HRDS)
+%.o: %.cpp $(HDR)
 	$(CXX) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)

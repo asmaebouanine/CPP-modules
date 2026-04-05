@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 16:54:10 by asbouani          #+#    #+#             */
-/*   Updated: 2026/04/03 21:25:03 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/04/05 10:38:26 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,18 @@ int main()
 {
     std::string s[] = {"Hello", "C++", "ALICE", "HAH"};
     int n[] = {4, 2, 7, 9};
-    int lenght = 4;
+    int lentgh = 4;
     
     std::cout << "=== PRINT NUMBERS ===" << std::endl; ;
-    ::iter(n, lenght, printInt);
+    ::iter(n, lentgh, printInt);
     std::cout << std::endl;
     
-    ::iter(n, lenght, increment);
+    ::iter(n, lentgh, increment);
     
     std::cout << "\n=== UPDATED NUMBERS ===" << std::endl;;
-    ::iter(n, lenght, printInt);
+    ::iter(n, lentgh, printInt);
     std::cout << std::endl;
     
     std::cout << "\n=== PRINT WORDS ===" << std::endl;
-    ::iter(s, lenght, printString);
+    ::iter(s, lentgh, printString);
 }

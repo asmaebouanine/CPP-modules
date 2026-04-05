@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 17:53:39 by asbouani          #+#    #+#             */
-/*   Updated: 2026/04/05 10:41:58 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/04/05 19:45:20 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ int main()
     }
     catch(const std::exception& e)
     {
-        std::cout << e.what() << '\n';
+        std::cout << e.what() << std::endl;
     } 
 }

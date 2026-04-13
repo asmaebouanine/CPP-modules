@@ -6,16 +6,17 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/06 12:12:21 by asbouani          #+#    #+#             */
-/*   Updated: 2026/04/06 19:45:12 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/04/13 23:54:53 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 #include <algorithm>
+#include <exception>
 
-Span::Span() : _N(0), _numbers(0) {}
+Span::Span() : _N(0) {}
 
-Span::Span(unsigned int N) : _N(N), _numbers(0) {}
+Span::Span(unsigned int N) : _N(N) {}
 
 Span::Span(const Span& other)
 {
@@ -35,19 +36,18 @@ Span& Span::operator=(const Span& other)
 void Span::addNumber(int value)
 {
     if (_N == _numbers.size())
-        throw (std::exception());
+        throw std::out_of_range("Span is full");
     _numbers.push_back(value);
 }
 int Span::shortestSpan() const
 {
-    int size = _numbers.size();
     int diff;
-    if (size < 2)
-        throw (std::exception());
+    if (_numbers.size() < 2)
+        throw std::logic_error("Not enough numbers");
     std::vector<int> copy = _numbers;
     std::sort(copy.begin(), copy.end());
     int shortSpan = copy[1] - copy[0];
-    for (int i = 0; i < size - 1; i++)
+    for (size_t i = 0; i < copy.size() - 1; i++)
     {
         diff = copy[i+1] - copy[i];
         if (diff < shortSpan)
@@ -58,12 +58,11 @@ int Span::shortestSpan() const
 
 int Span::longestSpan() const
 {
-    int size = _numbers.size();
-    if (size < 2)
-        throw (std::exception());
+    if (_numbers.size() < 2)
+        throw std::logic_error("Not enough numbers");
     std::vector<int> copy = _numbers;
     std::sort(copy.begin(), copy.end());
-    int longSpan = copy[size - 1] - copy[0];
+    int longSpan = copy[copy.size() - 1] - copy[0];
     return (longSpan);
 }
 

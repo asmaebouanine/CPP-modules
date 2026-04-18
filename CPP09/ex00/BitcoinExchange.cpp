@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 11:54:01 by asbouani          #+#    #+#             */
-/*   Updated: 2026/04/18 22:53:48 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/04/18 23:56:08 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,16 @@ std::string findClosestDate(const std::map<std::string, float>& db, const std::s
     --it;
     return it->first;
 }
+bool isLeapYear(int year)
+{
+    return ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0));
+}
 bool parseDate(std::string& date)
 {
-    if (date.length() != 11)
+    if (date.length() != 10)
         return false;
-        
-    for(size_t i = 0; i < date.length()- 1 ; i++)
+    
+    for(size_t i = 0; i < date.length() - 1; i++)
     {
         if (i == 4 || i == 7)
         {
@@ -68,20 +72,34 @@ bool parseDate(std::string& date)
                 return false;
         }
     }
-    
     //Extract year, month, day
+    int year = std::atoi(date.substr(0,4).c_str());
     int month = std::atoi(date.substr(5, 2).c_str());
     int day = std::atoi(date.substr(8, 2).c_str());
-    
+    //check days  
+    if (day < 1 || day > 31)
+    return false;
+    //check months
     if (month < 1 || month > 12)
         return false;
-    if (day < 0 || day > 31)
-        return false;
-    if (month == 4 || month == 6 || month == 9 || month == 11)
+    if (month == 2)
+    {
+        if (isLeapYear(year))
         {
-            if (day == 31)
+            if (day > 29)
                 return false;
         }
+        else
+        {
+            if (day > 28)
+                return false;
+        }
+    }
+    if (month == 4 || month == 6 || month == 9 || month == 11)
+    {
+        if (day == 31)
+        return false;
+    }
     return true;
 }
 bool isNumber(const std::string& str)
@@ -98,7 +116,6 @@ bool isNumber(const std::string& str)
 }
 int processInput(const std::string& inputFile, const std::map<std::string, float>& db)
 {
-    
     std::ifstream file(inputFile.c_str());
     if (!file.is_open())
     {
@@ -118,8 +135,12 @@ int processInput(const std::string& inputFile, const std::map<std::string, float
         std::getline(ss, valueStr);
         
         //remove spaces
+        if (!date.empty() && date[date.length() - 1] == ' ')
+        date = date.substr(0, date.length() - 1);
+        //remove spaces
         if (!valueStr.empty() && valueStr[0] == ' ')
             valueStr = valueStr.substr(1);
+        
         if (!parseDate(date))
         {
             std::cout << "Error: bad input => " << date << std::endl;

@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 12:21:13 by asbouani          #+#    #+#             */
-/*   Updated: 2026/04/18 22:54:09 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/05/13 20:58:19 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,14 @@ int main(int ac, char **av)
         std::cout << "Error: could not open file." << std::endl;
         return 1;
     }
-     std::map<std::string, float> db = loadDatabase("data.csv");
-    if (processInput(av[1], db))
+    BitcoinExchange data;
+    std::map<std::string, float> db = data.loadDatabase("data.csv");
+    if (db.empty())
+    {
+        std::cout << "Error: invalid database" << std::endl;
+        return 1;   
+    }
+    if (data.processInput(av[1], db))
         return 1;
      return (0);
 }

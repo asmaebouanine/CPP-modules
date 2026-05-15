@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/19 15:19:15 by asbouani          #+#    #+#             */
-/*   Updated: 2026/04/23 10:20:40 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/05/05 19:57:12 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int main(int ac, char **av)
         return 1;
     }
     
-    std::stringstream ss(av[1]);
     RPN rpn;
-    if (rpn.evaluate(ss))
+    std::stringstream ss(av[1]);
+    if (rpn.compute(ss))
         return 1;
     return 0;
 }

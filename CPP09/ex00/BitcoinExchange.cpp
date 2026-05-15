@@ -6,24 +6,38 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 11:54:01 by asbouani          #+#    #+#             */
-/*   Updated: 2026/04/18 23:56:08 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/05/14 18:54:44 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-std::map<std::string, float> loadDatabase(const std::string& filename)
+BitcoinExchange::BitcoinExchange() {};
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& other)
+{
+    _database = other._database;
+}
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other)
+{
+    if (this != &other)
+        _database = other._database;
+    return (*this);
+}
+BitcoinExchange::~BitcoinExchange() {}
+
+std::map<std::string, float> BitcoinExchange::loadDatabase(const std::string& filename)
 {
     std::map<std::string, float> db;
     std::ifstream file(filename.c_str());
-      
+    
     if (!file.is_open())
     {
         std::cout << "Error: could not open file" << std::endl;
         return (db);
     }
     std::string line;
-    std::getline(file, line); //skip header
+    std::getline(file, line);
     
     while(std::getline(file, line))
     {
@@ -35,31 +49,35 @@ std::map<std::string, float> loadDatabase(const std::string& filename)
         
         float price = atof(priceStr.c_str());
         db[date] = price;
-    }   
+    }
     return (db);
 }
 
 std::string findClosestDate(const std::map<std::string, float>& db, const std::string& date)
 {
     std::map<std::string, float>::const_iterator it = db.lower_bound(date);
+    
     if (it != db.end() && it->first == date)
         return it->first;
 
     if (it == db.begin())
         return "";
     --it;
+    
     return it->first;
 }
+
 bool isLeapYear(int year)
 {
     return ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0));
 }
+
 bool parseDate(std::string& date)
 {
     if (date.length() != 10)
         return false;
     
-    for(size_t i = 0; i < date.length() - 1; i++)
+    for(size_t i = 0; i < date.length(); i++)
     {
         if (i == 4 || i == 7)
         {
@@ -72,14 +90,12 @@ bool parseDate(std::string& date)
                 return false;
         }
     }
-    //Extract year, month, day
     int year = std::atoi(date.substr(0,4).c_str());
     int month = std::atoi(date.substr(5, 2).c_str());
     int day = std::atoi(date.substr(8, 2).c_str());
-    //check days  
+  
     if (day < 1 || day > 31)
-    return false;
-    //check months
+        return false;
     if (month < 1 || month > 12)
         return false;
     if (month == 2)
@@ -98,48 +114,69 @@ bool parseDate(std::string& date)
     if (month == 4 || month == 6 || month == 9 || month == 11)
     {
         if (day == 31)
-        return false;
-    }
-    return true;
-}
-bool isNumber(const std::string& str)
-{
-    size_t i = 0;
-    if (str[i] == '-' || str[i] == '+')
-        i++;
-    for (; i < str.length(); i++)
-    {
-        if (!isdigit(str[i]) && str[i] != '.')
             return false;
     }
     return true;
 }
-int processInput(const std::string& inputFile, const std::map<std::string, float>& db)
+
+bool isNumber(const std::string& valueStr)
+{
+    size_t i = 0;
+    int flag = 0;
+    if (valueStr.empty())
+        return false;
+    if (valueStr[i] == '-' || valueStr[i] == '+')
+        i++;
+    if (valueStr.length() == i)
+        return false;
+    for (; i < valueStr.length(); i++)
+    {
+        if (!isdigit(valueStr[i]) && valueStr[i] != '.')
+            return false;
+        if (valueStr[i] == '.')
+            flag++;
+    }
+    if (flag > 1)
+        return false;
+    return true;
+}
+
+std::string trim(const std::string& str)
+{
+    size_t first = str.find_first_not_of(" \t");
+    if (first == std::string::npos)
+        return "";
+    size_t last = str.find_last_not_of(" \t");
+    return (str.substr(first, (last - first + 1)));
+}
+
+int BitcoinExchange::processInput(const std::string& inputFile, const std::map<std::string, float>& db)
 {
     std::ifstream file(inputFile.c_str());
+    
     if (!file.is_open())
     {
         std::cout << "Error: cannot open input file" << std::endl;
         return 1;
     }
     std::string line;
-    std::getline(file, line); //skip header
+    
+    if (!std::getline(file, line))
+    {
+        std::cout << "Error: empty file" << std::endl;
+        return 1;
+    }
     
     while(std::getline(file, line))
     {
         std::stringstream ss(line);
         std::string date;
         std::string valueStr;
-
         std::getline(ss, date, '|');
         std::getline(ss, valueStr);
         
-        //remove spaces
-        if (!date.empty() && date[date.length() - 1] == ' ')
-        date = date.substr(0, date.length() - 1);
-        //remove spaces
-        if (!valueStr.empty() && valueStr[0] == ' ')
-            valueStr = valueStr.substr(1);
+        date = trim(date);
+        valueStr = trim(valueStr);
         
         if (!parseDate(date))
         {
@@ -148,10 +185,11 @@ int processInput(const std::string& inputFile, const std::map<std::string, float
         }
         if (!isNumber(valueStr))
         {
-            std::cout << "Error: not a number." << std::endl;
+            std::cout << "Error: bad input => " << date << std::endl;
             continue ;
         }
         float value = std::atof(valueStr.c_str());
+    
         if (!(value >= 0 ))
         {
             std::cout << "Error: not a positive number." << std::endl;
@@ -168,9 +206,11 @@ int processInput(const std::string& inputFile, const std::map<std::string, float
             std::cout << "Error: bad input => " << date << std::endl;
             continue;
         }
+    
         float price = db.at(closestDate);
         float result = price * value;
-        std::cout << date << "=> " << value << " = " << result << std::endl;
+        std::cout << date << " => " << value << " = " << result << std::endl;
     }
+    
     return 0;
 }

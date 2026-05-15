@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/19 19:58:45 by asbouani          #+#    #+#             */
-/*   Updated: 2026/04/23 10:21:21 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/05/05 19:57:28 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ class RPN
         RPN operator=(const RPN& other);
         ~RPN();
         
-        int evaluate(std::stringstream &ss);
-
+        int compute(std::stringstream &ss);
 };
 
 #endif

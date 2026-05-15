@@ -6,7 +6,7 @@
 /*   By: asbouani <asbouani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 10:42:27 by asbouani          #+#    #+#             */
-/*   Updated: 2026/05/01 17:20:07 by asbouani         ###   ########.fr       */
+/*   Updated: 2026/05/11 17:49:05 by asbouani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int main(int ac, char **av)
         std::cerr << "Error: invalid input" << std::endl;
         return 1;
     }
-    
     PmergeMe sorter;
     
     if (sorter.parseInput(ac, av))
